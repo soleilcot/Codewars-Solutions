@@ -1,4 +1,24 @@
 from digital_root import digital_root
+from convert_string_to_camel_case import to_camel_case
+
+
+# String to Camel Case Cases
+def test_string_to_camel_case_1():
+    assert (
+        to_camel_case("the-stealth-warrior") == "theStealthWarrior"
+    ), "Failed for camel case: the-stealth-warrior"
+
+
+def test_string_to_camel_case_2():
+    assert (
+        to_camel_case("The_Stealth_Warrior") == "TheStealthWarrior"
+    ), "Failed for camel case: The_Stealth_Warrior"
+
+
+def test_string_to_camel_case_3():
+    assert (
+        to_camel_case("The_Stealth-Warrior") == "TheStealthWarrior"
+    ), "Failed for camel case: The_Stealth-Warrior"
 
 
 # Digital Root Cases
