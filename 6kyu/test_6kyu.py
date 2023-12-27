@@ -1,5 +1,6 @@
 from digital_root import digital_root
 from convert_string_to_camel_case import to_camel_case
+from categorize_new_member import open_or_senior, process_member
 
 
 # String to Camel Case Cases
@@ -76,3 +77,39 @@ def test_digital_root_190862():
 
 def test_digital_root_155073():
     assert digital_root(155073) == 3, "Failed for digital root case: 155073"
+
+
+# Categorize New Member cases
+def test_process_member_open_young():
+    assert process_member([30, 10]) == "Open"
+
+
+def test_process_member_open_age_limit():
+    assert process_member([55, 7]) == "Open"
+
+
+def test_process_member_senior_min_criteria():
+    assert process_member([55, 8]) == "Senior"
+
+
+def test_process_member_senior_above_criteria():
+    assert process_member([60, 10]) == "Senior"
+
+
+def test_open_or_senior_mixed_cases():
+    assert open_or_senior(
+        [[18, 20], [45, 2], [61, 12], [37, 6], [21, 21], [78, 9]]
+    ) == ["Open", "Open", "Senior", "Open", "Open", "Senior"]
+
+
+def test_open_or_senior_edge_cases():
+    assert open_or_senior([[55, 7], [56, 7], [54, 8], [55, 8]]) == [
+        "Open",
+        "Open",
+        "Open",
+        "Senior",
+    ]
+
+
+def test_open_or_senior_empty_list():
+    assert open_or_senior([]) == []
